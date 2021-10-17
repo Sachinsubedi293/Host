@@ -30,12 +30,12 @@ const Card = (props) => {
     const [Tsimage, setTsimage] = useState('');
     const [Typesecond, setTypesecond] = useState([]);
 
-   
+
     useEffect(() => {
         axios.get(props.url).then((result) => {
             let arr = [];
             arr.push(result.data);
-   
+
             var a = result.data.id;
             setApi(arr);
             let array = [];
@@ -82,7 +82,7 @@ const Card = (props) => {
             if (result.data.types.length === 2) {
                 array2.push(result.data.types[1].type);
                 setTypesecond(array2);
-               
+
                 if (result.data.types[1].type.name === 'grass') {
                     setTsimage(grass);
                 } else if (result.data.types[1].type.name === 'bug') {
@@ -121,9 +121,6 @@ const Card = (props) => {
                     setTsimage(flying);
                 }
             }
-
-
-          
             setImage(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${a}.png`);
 
         })
@@ -133,35 +130,35 @@ const Card = (props) => {
             <div key={a.id}>
 
                 <div className="col mt-4 mb-2 p-2 container-fluid p-0  " key={a.id}>
-                    <Link to={"detailpage/" + Api.map(a => a.id)} style={{textDecoration:'none', color:'black'}} >
-                    <div className="card shadow m-2 container-fluid" key={a.id} >{Image === ''?<div className ="d-flex justify-content-center" key={a.id}>
-                    <div className ="spinner-border" role="status">
-                    <span className ="visually-hidden">Loading...</span>
-                    </div>
-                    </div>: <img src={Image} className="card-img-top" key={a.id} alt={a.name} />}
+                    <Link to={"detailpage/" + Api.map(a => a.id)} style={{ textDecoration: 'none', color: 'black' }} >
+                        <div className="card shadow m-2 container-fluid" key={a.id} >{Image === '' ? <div className="d-flex justify-content-center" key={a.id}>
+                            <div className="spinner-border" role="status">
+                                <span className="visually-hidden">Loading...</span>
+                            </div>
+                        </div> : <img src={Image} className="card-img-top" key={a.id} alt={a.name} />}
 
-                    <div className="card-body text-left">
-                    <h3 className="card-title text-center" style={{ textTransform: "capitalize" }} key={a.id}>{a.id}.{a.name}</h3>
-                    <ul type ="none">
-                    <li className="card-text text-center font-weight-bold">Type/Types: {Type.map(a => (
-                    <div key={a.name+"njxn"}>
-                    <div> <img src={Timage} alt={Timage} style={{maxWidth: "1cm"}} /> <strong style={{textTransform: "capitalize"}} key={a.name+"njxn"}>{a.name}</strong></div>
-                    <div> <img src={Tsimage} alt={Tsimage} style={{maxWidth: "1cm"}} /> {Typesecond.map(a => (<strong style={{textTransform: "capitalize"}} key={a.name+"njxn"}>{a.name}</strong>))}</div>
-                    </div>
-                ))}</li>
-                    <li>
-                    Base Experience(Exp.): <strong key={a.id}>{a.base_experience}</strong>
-                    </li>
-                    <li>
-                    Weight: <strong key={a.id}>{a.weight/10} kg || {parseFloat((a.weight/10)*2.20462).toFixed(3)} lbs.</strong>
-                    </li>
-                    <li>
-                    Height: <strong key={a.id}>{a.height*10} cm || {(a.height*10)/100} m</strong>
-                    </li>
-                    </ul>
-                   
-                    </div>
-                    </div>
+                            <div className="card-body text-left">
+                                <h3 className="card-title text-center" style={{ textTransform: "capitalize" }} key={a.id}>{a.id}.{a.name}</h3>
+                                <ul type="none">
+                                    <li className="card-text text-center font-weight-bold">Type/Types: {Type.map(a => (
+                                        <div key={a.name + "njxn"}>
+                                            <div> <img src={Timage} alt={Timage} style={{ maxWidth: "1cm" }} /> <strong style={{ textTransform: "capitalize" }} key={a.name + "njxn"}>{a.name}</strong></div>
+                                            <div> <img src={Tsimage} alt={Tsimage} style={{ maxWidth: "1cm" }} /> {Typesecond.map(a => (<strong style={{ textTransform: "capitalize" }} key={a.name + "njxn"}>{a.name}</strong>))}</div>
+                                        </div>
+                                    ))}</li>
+                                    <li>
+                                        Base Experience(Exp.): <strong key={a.id}>{a.base_experience}</strong>
+                                    </li>
+                                    <li>
+                                        Weight: <strong key={a.id}>{a.weight / 10} kg || {parseFloat((a.weight / 10) * 2.20462).toFixed(3)} lbs.</strong>
+                                    </li>
+                                    <li>
+                                        Height: <strong key={a.id}>{a.height * 10} cm || {(a.height * 10) / 100} m</strong>
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </div>
                     </Link>
                 </div>
             </div>

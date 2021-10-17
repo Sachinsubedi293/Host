@@ -33,19 +33,20 @@ const Detailpage = () => {
     </nav>
     <div class="container">
       <div class="row row-cols-md-2">
+    {Api.map(a => (<>
+                <div class="col">
+                <div class="card" style={{transform: 'none'}}>
+                  <img src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/"+a.id+".png"} class="img-fluid rounded" alt="" />
+                  </div>
 
-      </div>
-    </div>
-    <div>{Api.map(a => (<>
-                <div class="col">
-              <img src={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/'+a.name+'.png'} class="img-fluid" alt=''/>
                 </div>
-                
                 <div class="col">
-    
+                <div class="card" style={{transform: 'none'}}>
+                  <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png" class="img-fluid rounded" alt="" />
+                  </div>
                 </div></>
 
-    ))}</div>
+    ))}</div></div>
   </>);
 }
 export default Detailpage;
