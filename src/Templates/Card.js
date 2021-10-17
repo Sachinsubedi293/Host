@@ -35,7 +35,7 @@ const Card = (props) => {
         axios.get(props.url).then((result) => {
             let arr = [];
             arr.push(result.data);
-            console.log(result.data);
+   
             var a = result.data.id;
             setApi(arr);
             let array = [];
@@ -82,7 +82,7 @@ const Card = (props) => {
             if (result.data.types.length === 2) {
                 array2.push(result.data.types[1].type);
                 setTypesecond(array2);
-                console.log(array2);
+               
                 if (result.data.types[1].type.name === 'grass') {
                     setTsimage(grass);
                 } else if (result.data.types[1].type.name === 'bug') {
@@ -123,7 +123,7 @@ const Card = (props) => {
             }
 
 
-            // console.warn(result.data.sprites.other.official-artwork);
+          
             setImage(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${a}.png`);
 
         })

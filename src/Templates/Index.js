@@ -43,7 +43,7 @@ const Index = () => {
             setMainApi(res.data.results);
             setPrevious(res.data.previous);
             setCount(res.data.count)
-            console.log(res.data);
+            
         })
             .catch((err) => {
                 console.error(err);
