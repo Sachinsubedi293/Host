@@ -1,0 +1,17 @@
+div{
+    text-decoration: none;
+}
+.card:hover{
+ transform: scale(1.1);
+ transition-duration: 500ms;
+}
+.card{
+    text-decoration: none;
+    transform-box: inherit;
+    overflow-wrap: break-word;
+    text-decoration-color: green;
+}
+body{
+    text-decoration: none;
+}
+
