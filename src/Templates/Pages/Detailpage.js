@@ -20,6 +20,11 @@ import rock from '../Static/Type-rock.png';
 import steel from '../Static/Type-steel.png';
 import water from '../Static/Type-water.png';
 import '../Static/css/style.css';
+import Ability from './ability';
+import Moves from './moves';
+import Status from './status';
+import HeldItem from './helditem';
+import Encounter from './encounter';
 
 
 const Detailpage = () => {
@@ -28,7 +33,7 @@ const Detailpage = () => {
   const [Timage, setTimage] = useState('');
   const [Tsimage, setTsimage] = useState('');
   const [Typesecond, setTypesecond] = useState([]);
-const params = useParams();
+  const params = useParams();
 
   var id = params.id;
   useEffect(() => {
@@ -37,89 +42,90 @@ const params = useParams();
       let arr = [];
       arr.push(result.data);
       setApi(arr);
+      
 
       let array = [];
       array.push(result.data.types[0].type);
       if (result.data.types[0].type.name === 'grass') {
-          setTimage(grass);
+        setTimage(grass);
       } else if (result.data.types[0].type.name === 'bug') {
-          setTimage(bug);
+        setTimage(bug);
       } else if (result.data.types[0].type.name === 'dark') {
-          setTimage(dark);
+        setTimage(dark);
       } else if (result.data.types[0].type.name === 'dragon') {
-          setTimage(dragon);
+        setTimage(dragon);
       } else if (result.data.types[0].type.name === 'electric') {
-          setTimage(electric);
+        setTimage(electric);
       } else if (result.data.types[0].type.name === 'fairy') {
-          setTimage(fairy);
+        setTimage(fairy);
       } else if (result.data.types[0].type.name === 'fighting') {
-          setTimage(fighting);
+        setTimage(fighting);
       } else if (result.data.types[0].type.name === 'fire') {
-          setTimage(fire);
+        setTimage(fire);
       } else if (result.data.types[0].type.name === 'ghost') {
-          setTimage(ghost);
+        setTimage(ghost);
       } else if (result.data.types[0].type.name === 'ground') {
-          setTimage(ground);
+        setTimage(ground);
       } else if (result.data.types[0].type.name === 'ice') {
-          setTimage(ice);
+        setTimage(ice);
       } else if (result.data.types[0].type.name === 'normal') {
-          setTimage(normal);
+        setTimage(normal);
       } else if (result.data.types[0].type.name === 'phychic') {
-          setTimage(phychic);
+        setTimage(phychic);
       } else if (result.data.types[0].type.name === 'poison') {
-          setTimage(poison);
+        setTimage(poison);
       } else if (result.data.types[0].type.name === 'rock') {
-          setTimage(rock);
+        setTimage(rock);
       } else if (result.data.types[0].type.name === 'steel') {
-          setTimage(steel);
+        setTimage(steel);
       } else if (result.data.types[0].type.name === 'water') {
-          setTimage(water);
+        setTimage(water);
       } else {
-          setTimage(flying);
+        setTimage(flying);
       }
       setType(array);
       let array2 = [];
       if (result.data.types.length === 2) {
-          array2.push(result.data.types[1].type);
-          setTypesecond(array2);
+        array2.push(result.data.types[1].type);
+        setTypesecond(array2);
 
-          if (result.data.types[1].type.name === 'grass') {
-              setTsimage(grass);
-          } else if (result.data.types[1].type.name === 'bug') {
-              setTsimage(bug);
-          } else if (result.data.types[1].type.name === 'dark') {
-              setTsimage(dark);
-          } else if (result.data.types[1].type.name === 'dragon') {
-              setTsimage(dragon);
-          } else if (result.data.types[1].type.name === 'electric') {
-              setTsimage(electric);
-          } else if (result.data.types[1].type.name === 'fairy') {
-              setTsimage(fairy);
-          } else if (result.data.types[1].type.name === 'fighting') {
-              setTsimage(fighting);
-          } else if (result.data.types[1].type.name === 'fire') {
-              setTsimage(fire);
-          } else if (result.data.types[1].type.name === 'ghost') {
-              setTsimage(ghost);
-          } else if (result.data.types[1].type.name === 'ground') {
-              setTsimage(ground);
-          } else if (result.data.types[1].type.name === 'ice') {
-              setTsimage(ice);
-          } else if (result.data.types[1].type.name === 'normal') {
-              setTsimage(normal);
-          } else if (result.data.types[1].type.name === 'phychic') {
-              setTsimage(phychic);
-          } else if (result.data.types[1].type.name === 'poison') {
-              setTsimage(poison);
-          } else if (result.data.types[1].type.name === 'rock') {
-              setTsimage(rock);
-          } else if (result.data.types[1].type.name === 'steel') {
-              setTsimage(steel);
-          } else if (result.data.types[1].type.name === 'water') {
-              setTsimage(water);
-          } else {
-              setTsimage(flying);
-          }
+        if (result.data.types[1].type.name === 'grass') {
+          setTsimage(grass);
+        } else if (result.data.types[1].type.name === 'bug') {
+          setTsimage(bug);
+        } else if (result.data.types[1].type.name === 'dark') {
+          setTsimage(dark);
+        } else if (result.data.types[1].type.name === 'dragon') {
+          setTsimage(dragon);
+        } else if (result.data.types[1].type.name === 'electric') {
+          setTsimage(electric);
+        } else if (result.data.types[1].type.name === 'fairy') {
+          setTsimage(fairy);
+        } else if (result.data.types[1].type.name === 'fighting') {
+          setTsimage(fighting);
+        } else if (result.data.types[1].type.name === 'fire') {
+          setTsimage(fire);
+        } else if (result.data.types[1].type.name === 'ghost') {
+          setTsimage(ghost);
+        } else if (result.data.types[1].type.name === 'ground') {
+          setTsimage(ground);
+        } else if (result.data.types[1].type.name === 'ice') {
+          setTsimage(ice);
+        } else if (result.data.types[1].type.name === 'normal') {
+          setTsimage(normal);
+        } else if (result.data.types[1].type.name === 'phychic') {
+          setTsimage(phychic);
+        } else if (result.data.types[1].type.name === 'poison') {
+          setTsimage(poison);
+        } else if (result.data.types[1].type.name === 'rock') {
+          setTsimage(rock);
+        } else if (result.data.types[1].type.name === 'steel') {
+          setTsimage(steel);
+        } else if (result.data.types[1].type.name === 'water') {
+          setTsimage(water);
+        } else {
+          setTsimage(flying);
+        }
       }
 
     })
@@ -142,78 +148,109 @@ const params = useParams();
     </nav>
     <div className="container">
       <div className="row row-cols-md-2">
-    {Api.map(a => (<>
-                <div className="col-md-6 container-fluid p-0">
-                <div className="card" style={{transform: 'none'}}>
-                  <img src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/"+a.id+".png"} className="rounded container-fluid" alt={a.name}  />
-                 <div className=" row row-cols-md-4">
-                   <div className="col">
-                   <img src={a.sprites.front_default} className="img-fluid container-fluid p-0" alt={a.name} />
-                   </div>
-                   <div className="col">
-                   <img src={a.sprites.front_shiny} className="img-fluid container-fluid p-0" alt={a.name} />
-                   </div>
-                   <div className="col">
-                   <img src={a.sprites.back_default} className="img-fluid container-fluid p-0" alt={a.name} />
-                   </div>
-                   <div className="col">
-                   <img src={a.sprites.back_shiny} className="img-fluid container-fluid p-0" alt={a.name} />
-                   </div>
-                 </div>
-                  </div>
+        {Api.map(a => (<>
+          <div className="col-md-6 container-fluid p-0" key={a.name + "njxdhhudwn"}>
+            <div className="card" style={{ transform: 'none' }}>
+              <img src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + a.id + ".png"} className="rounded container-fluid" alt={a.name} />
+              <div className=" row row-cols-md-4">
+                <div className="col">
+                  <img src={a.sprites.front_default} className="img-fluid container-fluid p-0" alt={a.name} />
                 </div>
-                <div className="col-md-6 container-fluid p-0">
-                <div className="card" style={{transform: 'none'}}>
-                  <h1 className="text-center mt-5" style={{color: 'red', textTransform:'capitalize', fontWeight:'bold'}}>{a.name}</h1>
-                  <h3 className="text-center mt-2">Pokemon Details</h3>
-                  <table className="table table-striped table-responsive">
-                      <tbody>
-                        <tr>
-                          <td >Id:</td>
-                          <td style={{textTransform: "capitalize",fontWeight: "bold"}}>{a.id}</td>
-                        </tr>
-                        <tr>
-                          <td>Name:</td>
-                          <td style={{textTransform: "capitalize",fontWeight: "bold"}}>{a.name}</td>
-                          
-                        </tr>
-                        <tr>
-                          <td>Weight:
-                          </td>
-                          <td style={{textTransform: "capitalize",fontWeight: "bold"}}>{a.weight / 10} kg || {parseFloat((a.weight / 10) * 2.20462).toFixed(3)} lbs.</td>
-                        </tr>
-                        <tr>
-                          <td>Height:</td>
-                          <td style={{textTransform: "capitalize",fontWeight: "bold"}}>{a.height * 10} cm || {(a.height * 10) / 100} m</td>
-                        </tr>
-                        <tr>
-                          <td>Base Experience(Exp.):</td>
-                          <td style={{textTransform: "capitalize",fontWeight: "bold"}}>{a.base_experience}</td>
-                        </tr>
-                        <tr>
-                          <td>Order Num:</td>
-                          <td style={{textTransform: "capitalize",fontWeight: "bold"}}>{a.order}</td>
-                        </tr>
-                        <tr>
-                          <td>Is Default:</td>
-                          <td style={{textTransform: "capitalize",fontWeight: "bold"}}>{a.is_default?<>Yes</>:<>No</>}</td>
-                        </tr>
-                        <tr>
-                          <td>Type/Types:</td>
-                          <td style={{textTransform: "capitalize",fontWeight: "bold"}}>{Type.map(a => (
-                                        <div key={a.name + "njxn"}>
-                                            <div> <img src={Timage} alt={Timage} style={{ maxWidth: "1cm" }} /> <strong style={{ textTransform: "capitalize" }} key={a.name + "njxn"}>{a.name}</strong></div>
-                                            <div> <img src={Tsimage} alt={Tsimage} style={{ maxWidth: "1cm" }} /> {Typesecond.map(a => (<strong style={{ textTransform: "capitalize" }} key={a.name + "njxn"}>{a.name}</strong>))}</div>
-                                        </div>
-                                    ))}</td>
-                        </tr>
-                      </tbody>
-                  </table>
-                  
-                  </div>
-                </div></>
+                <div className="col">
+                  <img src={a.sprites.front_shiny} className="img-fluid container-fluid p-0" alt={a.name} />
+                </div>
+                <div className="col">
+                  <img src={a.sprites.back_default} className="img-fluid container-fluid p-0" alt={a.name} />
+                </div>
+                <div className="col">
+                  <img src={a.sprites.back_shiny} className="img-fluid container-fluid p-0" alt={a.name} />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-6 container-fluid p-0">
+            <div className="card" style={{ transform: 'none' }}>
+              <h1 className="text-center mt-5" style={{ color: 'red', textTransform: 'capitalize', fontWeight: 'bold' }}>{a.name}</h1>
+              <h3 className="text-center mt-2">Pokemon Details</h3>
+              <table className="table table-striped mt-2 table-responsive">
+                <tbody>
+                  <tr>
+                    <td >Id:</td>
+                    <td style={{ textTransform: "capitalize", fontWeight: "bold" }}>{a.id}</td>
+                  </tr>
+                  <tr>
+                    <td>Name:</td>
+                    <td style={{ textTransform: "capitalize", fontWeight: "bold" }}>{a.name}</td>
 
-    ))}</div></div>
+                  </tr>
+                  <tr>
+                    <td>Weight:
+                    </td>
+                    <td style={{ textTransform: "capitalize", fontWeight: "bold" }}>{a.weight / 10} kg || {parseFloat((a.weight / 10) * 2.20462).toFixed(3)} lbs.</td>
+                  </tr>
+                  <tr>
+                    <td>Height:</td>
+                    <td style={{ textTransform: "capitalize", fontWeight: "bold" }}>{a.height * 10} cm || {(a.height * 10) / 100} m</td>
+                  </tr>
+                  <tr>
+                    <td>Base Experience(Exp.):</td>
+                    <td style={{ textTransform: "capitalize", fontWeight: "bold" }}>{a.base_experience}</td>
+                  </tr>
+                  <tr>
+                    <td>Order Num:</td>
+                    <td style={{ textTransform: "capitalize", fontWeight: "bold" }}>{a.order}</td>
+                  </tr>
+                  <tr>
+                    <td>Is Default:</td>
+                    <td style={{ textTransform: "capitalize", fontWeight: "bold" }}>{a.is_default ? <>Yes</> : <>No</>}</td>
+                  </tr>
+                  <tr>
+                    <td>Type/Types:</td>
+                    <td style={{ textTransform: "capitalize", fontWeight: "bold" }}>{Type.map(a => (
+                      <div key={a.name + "njxbhxbhdn"}>
+                        <div> <img src={Timage} alt={Timage} style={{ maxWidth: "1cm" }} /> <strong style={{ textTransform: "capitalize" }} key={a.name + "njxn"}>{a.name}</strong></div>
+                        <div> <img src={Tsimage} alt={Tsimage} style={{ maxWidth: "1cm" }} /> {Typesecond.map(a => (<strong style={{ textTransform: "capitalize" }} key={a.name + "njxnhuhd"}>{a.name}</strong>))}</div>
+                      </div>
+                    ))}</td>
+                  </tr>
+                </tbody>
+              </table>
+
+            </div>
+          </div>
+
+        </>
+        ))}</div>
+      {Api.map(a => (
+        <div className="container-fluid p-0 mt-3" key={a.name + "njxdhudhuns"}>
+          <div className="row row-cols-md-2">
+            <div className="col-md-6">
+            <Ability id={id} />
+            </div>
+            <div className="col-md-6">
+            <Moves id={id} />
+            </div>
+            <div className="col-md-6">
+            <Status id={id}/>
+            </div>
+            <div className="col-md-6">
+            <HeldItem id={id}/>
+            </div>
+            <div className="col-md-6">
+            <Encounter url={a.location_area_encounters} />
+            </div>
+
+           
+          </div>
+          <div className="row text-center mt-3">
+            <h2>Evolution Chain</h2>
+            <div>
+              
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
   </>);
 }
 export default Detailpage;
