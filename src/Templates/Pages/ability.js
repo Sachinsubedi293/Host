@@ -10,11 +10,10 @@ export const Ability = (params) => {
     axios.get(`https://pokeapi.co/api/v2/pokemon/${params.id}/`).then((res) => {
   
       setApi(res.data.abilities);
-      console.log(res.data.abilities);
     }).catch((err) => {
       console.error(err);
     })
-  }, []);
+  }, [params.id]);
   return (
     <div>
       <div className="accordion accordion-flush" id="accordation1">

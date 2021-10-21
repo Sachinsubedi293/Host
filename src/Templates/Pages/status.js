@@ -9,11 +9,10 @@ const Status = (params) => {
         axios.get(`https://pokeapi.co/api/v2/pokemon/${params.id}/`).then((res) => {
 
             setApi(res.data.stats);
-            console.log(res.data.stats);
         }).catch((err) => {
             console.error(err);
         })
-    }, []);
+    }, [params.id]);
     return (
         <div>
             <div className="accordion accordion-flush" id="accordation3">

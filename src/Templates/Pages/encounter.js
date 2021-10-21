@@ -4,20 +4,15 @@ import React, { useState, useEffect } from 'react';
 
 const Encounter = (params) => {
     const [Api, setApi] = useState([]);
-    const [Version_details, setVersion_details] = useState([]);
     var Num = 1;
 
     useEffect(() => {
         axios.get(params.url).then((res) => {
             setApi(res.data);
-            console.log(res);
-            console.log(res.data.map(a=>a.version_details));
-            console.log(res.data.map(a=>a.version_details.map(a=>a)));
-            setVersion_details(res.data.map(a=>a.version_details.map(a=>{return a})));
         }).catch((err) => {
             console.error(err);
         })
-    }, []);
+    }, [params.url]);
     return (
         <div>
             <div className="accordion accordion-flush" id="accordation5">

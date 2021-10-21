@@ -10,12 +10,11 @@ export const Moves = (params) => {
         axios.get(`https://pokeapi.co/api/v2/pokemon/${params.id}/`).then((res) => {
 
             setApi(res.data.moves);
-            console.log(res.data.moves);
         }).catch((err) => {
             console.error(err);
         })
 
-    }, []);
+    }, [params.id]);
     return (
         <div>
             <div className="accordion accordion-flush" id="accordation2">

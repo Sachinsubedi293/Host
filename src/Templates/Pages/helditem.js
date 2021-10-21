@@ -9,11 +9,10 @@ const HeldItem = (params) => {
         axios.get(`https://pokeapi.co/api/v2/pokemon/${params.id}/`).then((res) => {
 
             setApi(res.data.held_items);
-            console.log(res.data.held_items);
         }).catch((err) => {
             console.error(err);
         })
-    }, []);
+    }, [params.id]);
     return (
         <div>
             {Api.map(a => (
