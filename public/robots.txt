@@ -2,4 +2,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://www.xml-sitemaps.com/download/pokepedia.ml-7455ada29/sitemap.xml
+Sitemap: https://pokepedia.ml/sitemap.xml
